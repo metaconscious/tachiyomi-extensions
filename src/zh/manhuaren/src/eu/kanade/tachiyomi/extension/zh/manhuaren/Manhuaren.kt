@@ -36,7 +36,7 @@ class Manhuaren : HttpSource() {
 
     private val c = "4e0a48e1c0b54041bce9c8f0e036124d"
     private val cacheControl: CacheControl by lazy { CacheControl.Builder().maxAge(10, MINUTES).build() }
-    private val userId = (100000000..4294967295).random().toString()
+    private val userId = "463375451"
 
     private fun generateGSNHash(url: HttpUrl): String {
         var s = c + "GET"
@@ -64,15 +64,15 @@ class Manhuaren : HttpSource() {
             .setQueryParameter("gaui", "1")
             .setQueryParameter("gln", "") // location
             .setQueryParameter("gcy", "US") // country
-            .setQueryParameter("gle", "zh") // language
+            .setQueryParameter("gle", "en") // language
             .setQueryParameter("gcl", "dm5") // umeng channel
             .setQueryParameter("gos", "1") // OS (int)
             .setQueryParameter("gov", "22_5.1.1") // "{Build.VERSION.SDK_INT}_{Build.VERSION.RELEASE}"
             .setQueryParameter("gav", "7.0.1") // app version
-            .setQueryParameter("gdi", "358240051111110") // device info
+            .setQueryParameter("gdi", "78,73,62,84,11,127,-37,-17,-127,25,38,102,-82,-68,-66,-24,-93,92,87,-93,95,-15,67,3,115,-46,-108,-48,47,-80,-51,53") // device info
             .setQueryParameter("gfcl", "dm5") // umeng channel config
-            .setQueryParameter("gfut", "1688140800000") // first used time
-            .setQueryParameter("glut", "1688140800000") // last used time
+            .setQueryParameter("gfut", "1689523952000") // first used time
+            .setQueryParameter("glut", "1689523952000") // last used time
             .setQueryParameter("gpt", "com.mhr.mangamini") // package name
             .setQueryParameter("gciso", "us") // https://developer.android.com/reference/android/telephony/TelephonyManager#getSimCountryIso()
             .setQueryParameter("glot", "") // longitude
@@ -102,28 +102,28 @@ class Manhuaren : HttpSource() {
             put("ciso", "us") // https://developer.android.com/reference/android/telephony/TelephonyManager#getSimCountryIso()
             put("cl", "dm5") // umeng channel
             put("cy", "US") // country
-            put("di", "358240051111110") // device info
+            put("di", "78,73,62,84,11,127,-37,-17,-127,25,38,102,-82,-68,-66,-24,-93,92,87,-93,95,-15,67,3,115,-46,-108,-48,47,-80,-51,53") // device info
             put("dm", "Android SDK built for x86") // Build.MODEL
             put("fcl", "dm5") // umeng channel config
             put("ft", "mhr") // from type
-            put("fut", "1688140800000") // first used time
+            put("fut", "1689523952000") // first used time
             put("installation", "dm5")
-            put("le", "zh") // language
+            put("le", "en") // language
             put("ln", "") // location
-            put("lut", "1688140800000") // last used time
-            put("nt", 4)
+            put("lut", "1689523952000") // last used time
+            put("nt", 1)
             put("os", 1) // OS (int)
             put("ov", "22_5.1.1") // "{Build.VERSION.SDK_INT}_{Build.VERSION.RELEASE}"
             put("pt", "com.mhr.mangamini") // package name
             put("rn", "1440x2952") // screen "{width}x{height}"
-            put("st", 0)
+            put("st", 1)
         }
         val yqppMap = HashMap<String, Any?>().apply {
             put("ciso", "us") // https://developer.android.com/reference/android/telephony/TelephonyManager#getSimCountryIso()
             put("laut", "0") // is allow location (0 or 1)
             put("lot", "") // longitude
             put("lat", "") // latitude
-            put("cut", "GMT+8") // time zone
+            put("cut", "GMT-8") // time zone
             put("fcc", "") // first country code
             put("flg", "") // first language
             put("lcc", "") // country code
@@ -135,6 +135,7 @@ class Manhuaren : HttpSource() {
         }
 
         return Headers.Builder().apply {
+            add("Authorization", "YINGQISTS2 eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc19mcm9tX3JndCI6ZmFsc2UsInVzZXJfbGVnYWN5X2lkIjo0NjMzNzU0NTEsImRldmljZV9pZCI6Ijc4LDczLDYyLDg0LDExLDEyNywtMzcsLTE3LC0xMjcsMjUsMzgsMTAyLC04MiwtNjgsLTY2LC0yNCwtOTMsOTIsODcsLTkzLDk1LC0xNSw2NywzLDExNSwtNDYsLTEwOCwtNDgsNDcsLTgwLC01MSw1MyIsInV1aWQiOiI3YWJiZjk1OC05YTJiLTRkYmUtYjMwMS0yNzE5MWM0MGE0OWEiLCJjcmVhdGV0aW1lX3V0YyI6IjIwMjMtMDctMTYgMDk6MzE6MDciLCJuYmYiOjE2ODk0OTk4NjcsImV4cCI6MTY4OTUwMzQ2NywiaWF0IjoxNjg5NDk5ODY3fQ.haAwOwvDePVPDEHX3Mqo3TxHkxonjXdrcKkOmAndnAvvvVfMJR37U1hIJ6a1GchfCmNchw-pWuwf2-JmZlNq3vWTAxWzDJG3raPnSJeMHuVv_gJTYYmlYr6DFzUejbDA7955T3OeokUdHr61YVexlzv-bhGwXjfABpzv4MWbBZli6SqhESnOWJ7Qrr0swEM02poEkiJU6ILPmEI0iPFLfp2An7JQ00QR_05XThbGWM18YrGBcX-D-pbMnp1XuPP5P2h6TjYGV7A6uGddwUhYba3RG2XMp5uFOpmz2fte1niSTlu1dk7rUOqfMrpBhuJKs4-1-11XQvnX0LvSU8zLjg")
             add("X-Yq-Yqci", JSONObject(yqciMap).toString())
             add("X-Yq-Key", userId)
             add("yq_is_anonymous", "1")
